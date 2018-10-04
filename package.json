@@ -1,37 +1,57 @@
 {
-	"private": true,
-	"name": "reactivesearch-packages",
-	"scripts": {
-		"dev:web": "concurrently --kill-others -n \"CORE\",\"WEB\",\"MAPS\", -c \"cyan\",\"yellow\",\"green\", \"npm start --prefix packages/reactivecore\" \"npm run watch --prefix packages/web\" \"npm run watch --prefix packages/maps\"",
-		"lint": "eslint .",
-		"lint:ts": "tslint -c tslint.json 'packages/web/**/**/*.{ts,tsx}'",
-		"lint:ts-fix": "tslint -c tslint.json --fix 'packages/web/**/**/*.{ts,tsx}'",
-		"precommit": "lint-staged",
-		"deploy-site": "scripts/deploy-site.sh",
-		"native:publish-stories": "cd packages/native/examples/datasearch/ && exp publish && cd .. && cd datepicker/ && exp publish && cd .. && cd daterange/ && exp publish && cd .. && cd multidropdownlist/ && exp publish && cd .. && cd multidropdownrange/ && exp publish && cd .. && cd singledropdownlist/ && exp publish && cd .. && cd singledropdownrange/ && exp publish && cd .. && cd textfield/ && exp publish && cd ../../../../"
-	},
-	"author": "metagrover",
-	"license": "Apache-2.0",
-	"workspaces": [
-		"packages/*",
-		"packages/web/examples/*",
-		"packages/maps/examples/*",
-		"site",
-		"site/demos/*"
+	"name": "@appbaseio/reactivesearch-native",
+	"version": "0.9.0",
+	"description": "Native data components for building reactive UIs with Elasticsearch",
+	"main": "src/index.js",
+	"files": [
+		"src/"
 	],
-	"lint-staged": {
-		"*.js": [
-			"eslint"
-		]
+	"scripts": {
+		"lint": "eslint .",
+		"precommit": "eslint ."
+	},
+	"author": "Appbase Inc. <info@appbase.io> (https://github.com/appbaseio)",
+	"license": "Apache-2.0",
+	"homepage": "https://github.com/appbaseio/reactivesearch",
+	"keywords": [
+		"appbaseio",
+		"appbase",
+		"search",
+		"UI components",
+		"react-native",
+		"reactivesearch"
+	],
+	"peerDependencies": {
+		"react": "*",
+		"react-native": "*"
 	},
 	"devDependencies": {
-		"concurrently": "^3.5.1",
-		"eslint": "^4.10.0",
+		"babel-cli": "^6.26.0",
+		"babel-eslint": "^8.2.3",
+		"babel-preset-react-native": "^4.0.0",
+		"eslint": "^4.19.1",
 		"eslint-config-airbnb": "^16.1.0",
-		"eslint-plugin-babel": "^4.1.2",
+		"eslint-config-prettier": "^2.9.0",
+		"eslint-plugin-babel": "^5.1.0",
+		"eslint-plugin-import": "^2.11.0",
 		"eslint-plugin-jsx-a11y": "^6.0.3",
-		"eslint-plugin-react": "^7.5.1",
+		"eslint-plugin-prettier": "^2.6.0",
+		"eslint-plugin-react": "^7.7.0",
+		"eslint-plugin-react-native": "^3.2.1",
 		"husky": "^0.14.3",
-		"lint-staged": "^7.0.0"
+		"prettier": "^1.12.1",
+		"react": "^16.3.2",
+		"react-native": "^0.55.4"
+	},
+	"dependencies": {
+		"@appbaseio/reactivecore": "^3.3.0",
+		"@ptomasroos/react-native-multi-slider": "^0.0.13",
+		"appbase-js": "^3.0.0",
+		"hoist-non-react-statics": "^2.5.0",
+		"native-base": "^2.4.2",
+		"prop-types": "^15.6.1",
+		"react-native-calendars": "^1.18.2",
+		"react-redux": "^5.0.7",
+		"xdate": "^0.8.2"
 	}
 }
