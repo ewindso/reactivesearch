@@ -413,8 +413,7 @@ class DataSearch extends Component {
 								: <Right style={getInnerKey(this.props.innerStyle, 'right')} />
 						}
 					</Header>
-					<Item
-						regular
+					<View
 						style={{ marginLeft: 10, margin: 10 }}
 						{...getInnerKey(this.props.innerProps, 'item')}
 					>
@@ -437,6 +436,7 @@ class DataSearch extends Component {
 								color: this.props.theming.textColor,
 								...style,
 								...getInnerKey(this.props.innerStyle, 'input'),
+								borderWidth: 0
 							}}
 							returnKeyType="search"
 							onSubmitEditing={e => this.selectSuggestion(e.nativeEvent.text)}
@@ -462,14 +462,14 @@ class DataSearch extends Component {
 								)
 								: null
 						}
-					</Item>
+					</View>
 					{this.renderSuggestions()}
 				</Modal>
 			);
 		}
 
 		return (
-			<Item
+			<View
 				regular
 				style={{ marginLeft: 0 }}
 				{...getInnerKey(this.props.innerProps, 'item')}
@@ -534,7 +534,7 @@ class DataSearch extends Component {
 						)
 						: null
 				}
-			</Item>
+			</View>
 		);
 	};
 
@@ -563,8 +563,7 @@ class DataSearch extends Component {
 					this.props.autosuggest
 						? this.renderDataSearch(style)
 						: (
-							<Item
-								regular
+							<View
 								style={{ marginLeft: 0 }}
 								{...getInnerKey(this.props.innerProps, 'item')}
 							>
@@ -639,7 +638,7 @@ class DataSearch extends Component {
 										)
 										: null
 								}
-							</Item>
+							</View>
 						)
 				}
 			</View>
