@@ -3,7 +3,6 @@ import { View, Modal, FlatList, TouchableWithoutFeedback } from 'react-native';
 import {
 	Text,
 	Body,
-	Item,
 	Header,
 	Left,
 	Button,
@@ -349,8 +348,7 @@ class MultiDropdownList extends Component {
 								/>
 							</Modal>)
 						: (
-							<Item
-								regular
+							<View
 								style={{ marginLeft: 0 }}
 								{...getInnerKey(this.props.innerProps, 'item')}
 							>
@@ -370,7 +368,7 @@ class MultiDropdownList extends Component {
 											paddingLeft: 8,
 											paddingRight: 5,
 											paddingTop: 12,
-											...getInnerKey(this.props.innerStyle, 'label'),
+											...getInnerKey(this.props.innerStyle, 'text'),
 										}}
 										{...getInnerKey(this.props.innerProps, 'text')}
 									>
@@ -381,7 +379,7 @@ class MultiDropdownList extends Component {
 										}
 									</Text>
 								</TouchableWithoutFeedback>
-							</Item>
+							</View>
 						)
 				}
 			</View>
