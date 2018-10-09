@@ -75,6 +75,8 @@ class MultiDropdownList extends Component {
 			this.props.options,
 			nextProps.options,
 			() => {
+				this.props.onDataLoaded()
+
 				this.setState({
 					options: nextProps.options[nextProps.dataField]
 						? nextProps.options[nextProps.dataField].buckets
@@ -417,6 +419,7 @@ MultiDropdownList.propTypes = {
 	theming: types.style,
 	innerStyle: types.style,
 	innerProps: types.props,
+	onDataLoaded: types.func
 };
 
 MultiDropdownList.defaultProps = {
@@ -426,6 +429,7 @@ MultiDropdownList.defaultProps = {
 	showCount: true,
 	placeholder: 'Select values',
 	style: {},
+	onDataLoaded: () => {}
 };
 
 const mapStateToProps = (state, props) => ({
