@@ -470,7 +470,6 @@ class DataSearch extends Component {
 
 		return (
 			<View
-				regular
 				style={{ marginLeft: 0 }}
 				{...getInnerKey(this.props.innerProps, 'item')}
 			>
@@ -564,7 +563,7 @@ class DataSearch extends Component {
 						? this.renderDataSearch(style)
 						: (
 							<View
-								style={{ marginLeft: 0 }}
+								style={{ marginLeft: 0, flex: 1 }}
 								{...getInnerKey(this.props.innerProps, 'item')}
 							>
 								{
