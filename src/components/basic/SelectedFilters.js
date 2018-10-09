@@ -5,6 +5,9 @@ import { Button, Text } from 'native-base';
 import { setValue, clearValues } from '@appbaseio/reactivecore/lib/actions';
 import types from '@appbaseio/reactivecore/lib/utils/types';
 import { connect } from '../../utils';
+import {
+	getInnerKey,
+} from '@appbaseio/reactivecore/lib/utils/helper';
 
 class SelectedFilters extends Component {
 	remove = (component) => {
@@ -47,15 +50,18 @@ class SelectedFilters extends Component {
 											height: 28,
 											paddingVertical: 4,
 											marginVertical: 2,
+											...getInnerKey(this.props.innerStyle, 'button')
 										}}
 										key={`${component}-${index}`} // eslint-disable-line
 										onPress={() => this.remove(component)}
 									>
 										<Text
+											numberOfLines={1}
 											style={{
 												paddingLeft: 8,
 												paddingRight: 4,
 												fontSize: 14,
+												...getInnerKey(this.props.innerStyle, 'buttonText')
 											}}
 										>
 											{selectedValues[component].label}: {this.renderValue(value, isArray)}
@@ -65,6 +71,7 @@ class SelectedFilters extends Component {
 												paddingLeft: 4,
 												paddingRight: 8,
 												fontSize: 14,
+												...getInnerKey(this.props.innerStyle, 'closeButtonText')
 											}}
 										>
 											&#x2715;
@@ -84,6 +91,7 @@ class SelectedFilters extends Component {
 									height: 28,
 									paddingVertical: 4,
 									marginVertical: 2,
+									...getInnerKey(this.props.innerStyle, 'button')
 								}}
 								onPress={this.props.clearValues}
 							>
@@ -92,6 +100,7 @@ class SelectedFilters extends Component {
 										paddingLeft: 8,
 										paddingRight: 8,
 										fontSize: 14,
+										...getInnerKey(this.props.innerStyle, 'buttonText')
 									}}
 								>
 									{this.props.clearAllLabel}
@@ -113,12 +122,14 @@ SelectedFilters.propTypes = {
 	style: types.style,
 	showClearAll: types.bool,
 	clearAllLabel: types.title,
+	innerStyle: types.style,
 };
 
 SelectedFilters.defaultProps = {
 	style: {},
 	showClearAll: true,
 	clearAllLabel: 'Clear All',
+
 };
 
 const mapStateToProps = state => ({
