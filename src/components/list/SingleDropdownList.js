@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Picker } from 'native-base';
+import { Picker, Button, Text } from 'native-base';
 
 import {
 	addComponent,
@@ -41,7 +41,7 @@ class SingleDropdownList extends Component {
 		this.props.addComponent(this.props.componentId);
 		this.updateQueryOptions(this.props);
 
-		this.setReact(this.props);
+		// this.setReact(this.props);
 
 		if (this.props.selectedValue) {
 			this.setValue(this.props.selectedValue);
@@ -172,13 +172,35 @@ class SingleDropdownList extends Component {
 		};
 		props.setQueryOptions(this.internalComponent, queryOptions);
 	}
+	renderButton = ({onPress, text, picker, selectedItem}) => {
+		const { renderIcon = () => null } = this.props
 
+		return (
+			<Button
+				dark
+				picker
+				transparent
+				style={{
+					width: '100%',
+					height: 50,
+					borderRadius: 0,
+					...this.props.style
+				}}
+				onPress={() => {
+					this.setReact(this.props)
+					onPress()
+				}}
+			>
+				<Text>{text}</Text>
+			</Button>
+		)
+	}
 	render() {
 		let selectAll = [];
 
-		if (this.state.options.length === 0) {
-			return null;
-		}
+		// if (this.state.options.length === 0) {
+		// 	return null;
+		// }
 
 		if (this.props.selectAllLabel) {
 			selectAll = [{
@@ -206,6 +228,7 @@ class SingleDropdownList extends Component {
 					flexGrow: 1,
 					...getInnerKey(this.props.innerStyle, 'label'),
 				}}
+				renderButton={this.renderButton}
 				{...getInnerKey(this.props.innerProps, 'picker')}
 			>
 				{
