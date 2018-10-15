@@ -33,7 +33,7 @@ class ReactiveList extends Component {
 
 		this.state = {
 			from: 0,
-			isLoading: true,
+			isLoading: false,
 			totalPages: 0,
 			currentPage: 0,
 		};
