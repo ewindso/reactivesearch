@@ -208,8 +208,10 @@ class SingleDropdownList extends Component {
 			}];
 		}
 
+		const { PickerComponent = Picker } = this.props
+
 		return (
-			<Picker
+			<PickerComponent
 				iosHeader="Select one"
 				mode="dropdown"
 				placeholder={this.props.placeholder}
@@ -250,7 +252,7 @@ class SingleDropdownList extends Component {
 						/>);
 					})
 				}
-			</Picker>
+			</PickerComponent>
 		);
 	}
 }
