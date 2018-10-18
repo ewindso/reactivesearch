@@ -191,7 +191,7 @@ class SingleDropdownList extends Component {
 					onPress()
 				}}
 			>
-				<Text>{text}</Text>
+				<Text uppercase={false}>{text}</Text>
 			</Button>
 		)
 	}
