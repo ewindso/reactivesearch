@@ -53,6 +53,10 @@ class DataSearch extends Component {
 		this.props.addComponent(this.props.componentId);
 		this.props.addComponent(this.internalComponent);
 
+		if(this.props.assignSetValue) {
+			this.props.assignSetValue(this.setValue)
+		}
+
 		if (this.props.highlight) {
 			const queryOptions = this.highlightQuery(this.props) || {};
 			queryOptions.size = 20;
@@ -244,6 +248,7 @@ class DataSearch extends Component {
 
 	setValue = (value, isDefaultValue = false, props = this.props) => {
 		const performUpdate = () => {
+
 			this.setState({
 				currentValue: value,
 			});
@@ -470,6 +475,7 @@ class DataSearch extends Component {
 
 		return (
 			<View
+				regular
 				style={{ marginLeft: 0 }}
 				{...getInnerKey(this.props.innerProps, 'item')}
 			>
