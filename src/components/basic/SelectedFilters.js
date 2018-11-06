@@ -27,7 +27,13 @@ class SelectedFilters extends Component {
 		}
 		return value;
 	}
+	_onPressClearAll = () => {
+		this.props.clearValues()
 
+		if(this.props.onClearAll) {
+			this.props.onClearAll()
+		}
+	}
 	render() {
 		const { selectedValues } = this.props;
 		let hasValues = false;
@@ -93,7 +99,7 @@ class SelectedFilters extends Component {
 									marginVertical: 2,
 									...getInnerKey(this.props.innerStyle, 'button')
 								}}
-								onPress={this.props.clearValues}
+								onPress={this._onPressClearAll}
 							>
 								<Text
 									style={{
@@ -123,6 +129,7 @@ SelectedFilters.propTypes = {
 	showClearAll: types.bool,
 	clearAllLabel: types.title,
 	innerStyle: types.style,
+	onClearAll: types.func
 };
 
 SelectedFilters.defaultProps = {
